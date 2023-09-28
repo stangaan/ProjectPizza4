@@ -3,18 +3,17 @@ package com.example.probe.Controller;
 import com.example.probe.Entity.Pizza;
 import com.example.probe.Service.PizzaService;
 
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api/pizza")
 public class PizzaController {
     private final PizzaService pizzaService;
 
-    public PizzaController(PizzaService pizzaService) {
-        this.pizzaService = pizzaService;
-    }
 @GetMapping("/pizza")
 public List<Pizza> getAllPizza(){
         return pizzaService.getAllPizza();
@@ -35,6 +34,7 @@ public List<Pizza> getAllPizza(){
     @DeleteMapping("/delete{id}")
     public void deletePizza(@PathVariable Long id){
         pizzaService.deletePizza(id);
+
     }
 
 

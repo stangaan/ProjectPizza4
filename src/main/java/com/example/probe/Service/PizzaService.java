@@ -3,22 +3,18 @@ package com.example.probe.Service;
 import com.example.probe.Entity.Pizza;
 import com.example.probe.Repository.PizzaRepository;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 
 
 @Service
  public class PizzaService {
     private final PizzaRepository pizzaRepository;
-
-    @Autowired
-    public PizzaService(PizzaRepository pizzaRepository) {
-        this.pizzaRepository = pizzaRepository;
-    }
-
 
     public List<Pizza> getAllPizza(){
         return pizzaRepository.findAll();

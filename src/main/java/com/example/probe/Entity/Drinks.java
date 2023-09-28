@@ -1,24 +1,23 @@
 package com.example.probe.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-@AllArgsConstructor
+
 
 @Entity
 @Data
 @Table(name = "drinks")
 public class Drinks {
+
     @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "drink_id")
     private Long id;
 
     @Column(name = "name_drink")
-    private String NamePizza;
+    private String NameDrink;
 
     @Column(name = "drink_ingredients")
     private String DrinkIngredients;
@@ -31,14 +30,10 @@ public class Drinks {
     @Column(name = "price")
 
     private int price;
-    @Column(name = "saled")
+    @Column(name = "sailed")
 
-    private int saled;
+    private int sailed;
 
-
-    public Drinks() {
-
-    }
 
     public void setId(Long id) {
         this.id = id;

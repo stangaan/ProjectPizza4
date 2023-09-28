@@ -3,19 +3,17 @@ package com.example.probe.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Data
 @Table(name = "pizza")
 public class Pizza {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pizza_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long PizzaId;
 
     @Column(name = "name_pizza")
@@ -33,9 +31,18 @@ public class Pizza {
     @Column(name = "quantity")
     private String quantity;
     @jakarta.persistence.Id
-    @GeneratedValue
-    private Long pizzaid;
+    private Long id;
 
+    public Pizza(){}
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
 
 

@@ -1,0 +1,41 @@
+      <!-- Для Maven -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+
+
+
+ users
+ http://localhost:8080/User/get-user1
+  {
+    "UserId": 0,
+    "firstName": "Stengauar",
+    "lastName": "Andrei",
+    "roll": "Admin",
+    "station": "IT",
+    "userId": 0
+  }
+  pizzas
+  http://localhost:8080/api/pizza/pizza
+   {
+      "size": 30,
+      "price": 3,
+      "quantity": "100",
+      "id": 0,
+      "ingredients": "Pfeffer, cheese,",
+      "namePizza": "Margarita",
+      "pizzaId": 1
+    }
+    all-drinks
+http://localhost:8080/api/drinks/all-drinks
+ {
+    "id": 0,
+    "drink_size": 500,
+    "drinkQuantity": 100,
+    "price": 3,
+    "sailed": 1,
+    "drinkIngredients": "Orange",
+    "nameDrink": "Orange sap"
+  }

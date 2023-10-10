@@ -28,14 +28,4 @@
       "namePizza": "Margarita",
       "pizzaId": 1
     }
-    all-drinks
-http://localhost:8080/api/drinks/all-drinks
- {
-    "id": 0,
-    "drink_size": 500,
-    "drinkQuantity": 100,
-    "price": 3,
-    "sailed": 1,
-    "drinkIngredients": "Orange",
-    "nameDrink": "Orange sap"
-  }
+

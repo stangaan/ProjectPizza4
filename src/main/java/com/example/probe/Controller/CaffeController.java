@@ -7,9 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
-
-@RestController
 @RequestMapping("/api/caffe")
+@RestController
 public class CaffeController {
 private  final CaffeService caffeService;
 

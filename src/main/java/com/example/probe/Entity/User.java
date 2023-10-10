@@ -1,10 +1,14 @@
 package com.example.probe.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "User")
@@ -27,5 +31,7 @@ public class User {
     @Column(name = "station")
     public String station;
 
+    @Column(name = "password")
+    public String password;
 
 }

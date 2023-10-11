@@ -14,7 +14,7 @@ public class UserController {
     private final UserService userService;
 
 @GetMapping("/user")
-public List<User> getAllUser(@RequestBody User user){return userService.getAllUsers();}
+public List<User> getAllUser(@RequestBody User user){return "<h2> Hello user<h2>" userService.getAllUsers();}
         @GetMapping("/get-user{id}")
     public List<User> getUserById(@PathVariable Long id){
         return userService.getAllUsers();

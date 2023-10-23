@@ -28,12 +28,10 @@ public List<Pizza> getAllPizza(){
         return pizzaService.createPizza(pizza);
     }
     @PutMapping("/update{id}")
-    public Pizza updatePizza(@PathVariable Long id, @RequestBody Pizza updatePizza){
-        return pizzaService.updatePizza(id, updatePizza);
-    }
+    public Pizza updatePizza(@PathVariable Long id, @RequestBody Pizza updatePizza){return pizzaService.updatePizza(id, updatePizza);}
     @DeleteMapping("/delete{id}")
-    public void deletePizza(@PathVariable Long id){
-        pizzaService.deletePizza(id);
+    public void deletePizza(@PathVariable Long id){pizzaService.deletePizza(id);
+
 
     }
 

@@ -31,4 +31,6 @@ public class Caffe {
     @Column(name = "closed_at")
     private Time closed_at;
 
+ public Caffe(long l, String s) {
+ }
 }

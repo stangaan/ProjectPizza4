@@ -5,6 +5,7 @@ import com.example.probe.Repository.CaffeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.sql.Time;
 import java.util.List;
 
 
@@ -24,12 +25,16 @@ public class CaffeService {
     public Caffe createCaffe(Caffe caffe){
         return caffeRepository.save(caffe);
     }
-    public Caffe updateCaffe(Long caffeID, Caffe updateCaffe) {
-        Caffe caffe = caffeRepository.findById(caffeID).orElse(null);
+    public Caffe updateCaffe(Long caffeId, Caffe updateCaffe) {
+        Caffe caffe = caffeRepository.findById(caffeId).orElse(null);
         if (caffe != null) {
             caffe.setNameCaffe(updateCaffe.getNameCaffe());
-            caffe.setQuantity(updateCaffe.getQuantity());
-            caffe.setPrice(updateCaffe.getPrice());
+            caffe.setCity(updateCaffe.getCity());
+            caffe.setAddress(updateCaffe.getAddress());
+            caffe.setEmail(updateCaffe.getEmail());
+            caffe.setPhone(updateCaffe.getPhone());
+            caffe.setOpenAt(Time.valueOf(toString()));
+            caffe.setClosed_at(Time.valueOf(toString()));
             return caffeRepository.save(caffe);
         }
     return null;

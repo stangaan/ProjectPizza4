@@ -1,36 +1,34 @@
 package com.example.probe.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
 
+import java.sql.Time;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "caffe")
 public class Caffe {
-
-
-    @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private Long caffeId;
-    @Column(name = "name_caffe")
-    private String NameCaffe;
+    @GeneratedValue (strategy = GenerationType.AUTO)
+   private Long caffeId;
+    @Column (name = "name_caffe")
+    private String nameCaffe;
+    @Column(name = "city")
+    private String city;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "phone")
+    private Long phone;
+    @Column(name = "open_at")
+    private Time openAt;
+    @Column(name = "closed_at")
+    private Time closed_at;
 
-    @Column(name = "quantity")
-    private String quantity;
-
-    @Column(name = "price")
-    private int price;
-
-
-    public void setCaffeId(Long caffeId) {
-        this.caffeId = caffeId;
-    }
-
-    public Long getCaffeId() {
-        return caffeId;
-    }
 }
-

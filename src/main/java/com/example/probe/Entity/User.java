@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
 import org.springframework.data.annotation.Id;
 
 @AllArgsConstructor
@@ -14,6 +14,29 @@ import org.springframework.data.annotation.Id;
 @Table(name = "User")
 public class User {
 
+    public Long getUserId() {
+        return UserId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getRoll() {
+        return roll;
+    }
+
+    public String getStation() {
+        return station;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     @jakarta.persistence.Id
     @Id

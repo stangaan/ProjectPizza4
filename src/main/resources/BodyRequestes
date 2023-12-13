@@ -4,7 +4,8 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-
+insert into register_users (id,  username, password, roles) values (1, 'user', 'user', 'ROLE_USER');
+insert into register_users (id,  username, password, roles) values (2, 'admin', 'admin', 'ROLE_ADMIN');
 
 
  users

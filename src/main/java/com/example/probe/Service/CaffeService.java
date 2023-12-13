@@ -19,26 +19,27 @@ public class CaffeService {
     public List<Caffe> getAllCaffe(){
         return caffeRepository.findAll();
     }
-    public Caffe getCaffeById(Long CaffeId){
-        return caffeRepository.findById(CaffeId).orElse(null);
+    public Caffe getCaffeById(Long caffeId){
+        return caffeRepository.findById(caffeId).orElse(null);
     }
     public Caffe createCaffe(Caffe caffe){
         return caffeRepository.save(caffe);
     }
     public Caffe updateCaffe(Long caffeId, Caffe updateCaffe) {
-        Caffe caffe = caffeRepository.findById(caffeId).orElse(null);
-        if (caffe != null) {
-            caffe.setNameCaffe(updateCaffe.getNameCaffe());
-            caffe.setCity(updateCaffe.getCity());
-            caffe.setAddress(updateCaffe.getAddress());
-            caffe.setEmail(updateCaffe.getEmail());
-            caffe.setPhone(updateCaffe.getPhone());
-            caffe.setOpenAt(Time.valueOf(toString()));
-            caffe.setClosed_at(Time.valueOf(toString()));
-            return caffeRepository.save(caffe);
+        Caffe caffe1 = caffeRepository.findById(caffeId).orElse(null);
+        if (caffe1 != null) {
+            caffe1.setNameCaffe(updateCaffe.getNameCaffe());
+            caffe1.setCity(updateCaffe.getCity());
+            caffe1.setAddress(updateCaffe.getAddress());
+            caffe1.setEmail(updateCaffe.getEmail());
+            caffe1.setPhone(updateCaffe.getPhone());
+            caffe1.setOpen_at(Time.valueOf(updateCaffe.getOpen_at().toLocalTime()));
+            caffe1.setClosed_at(Time.valueOf(updateCaffe.getClosed_at().toLocalTime()));
+            return caffeRepository.save(caffe1);
         }
-    return null;
+        return null;
     }
+
     public void deleteCaffe(Long caffeID){
         caffeRepository.deleteById(caffeID);
     }

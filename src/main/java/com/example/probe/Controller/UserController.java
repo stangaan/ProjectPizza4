@@ -3,7 +3,6 @@ package com.example.probe.Controller;
 import com.example.probe.Entity.User;
 import com.example.probe.Service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +13,10 @@ public class UserController {
     private final UserService userService;
 
 @GetMapping("/user")
-public String hello(){return "<h2> Hello user</h2>";}
-        @GetMapping(
+public String hello(){return "<h2> Hello user!!!</h2>";}
+    @GetMapping("/all-users")
+    public List<User> getAllUsers(){return userService.getAllUsers();}
+    @GetMapping(
                 "/get-user{id}")
     public List<User> getUserById(@PathVariable Long id){
         return userService.getAllUsers();

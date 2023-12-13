@@ -1,36 +1,44 @@
 package com.example.probe.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Time;
 
+
 @Entity
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "caffe")
+@Table
 public class Caffe {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-   private Long caffeId;
-    @Column (name = "name_caffe")
+
+    private Long caffeId;
+
     private String nameCaffe;
-    @Column(name = "city")
+
     private String city;
-    @Column(name = "address")
+
     private String address;
-    @Column(name = "email")
+
     private String email;
-    @Column(name = "phone")
+
     private Long phone;
-    @Column(name = "open_at")
-    private Time openAt;
-    @Column(name = "closed_at")
+
+    private Time open_at;
+
     private Time closed_at;
 
- public Caffe(long l, String s) {
- }
+
+//@OneToMany(mappedBy= "caffe")
+ //private List<Pizza> pizzas;
+//@OneToMany
+ //@JoinColumn(name = "user_id")
+//private List<User> users;
+//@OneToMany
+  //@JoinColumn(name = "id")
+//private List<RegisterUsers> registerUsers;//
 }

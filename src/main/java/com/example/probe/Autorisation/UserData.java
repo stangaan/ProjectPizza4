@@ -2,8 +2,10 @@ package com.example.probe.Autorisation;
 
 import com.example.probe.Entity.RegisterUsers;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 // UserDetails это встроенная в спринг модель пользователя
@@ -14,13 +16,15 @@ public class UserData implements UserDetails {
 
     private RegisterUsers registerUsers; // наша модель
 
-    public UserData(RegisterUsers registerUsers) {
-    }
 
+
+public UserData (RegisterUsers registerUsers){
+        this.registerUsers=registerUsers;
+}
     // роли в модели пользователя спринг
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Arrays.asList(new SimpleGrantedAuthority(registerUsers.getRoles()));
     }
 
     @Override
@@ -52,4 +56,5 @@ public class UserData implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

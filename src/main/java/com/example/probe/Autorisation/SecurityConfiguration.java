@@ -1,6 +1,8 @@
 package com.example.probe.Autorisation;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -9,7 +11,8 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -31,7 +34,7 @@ public class SecurityConfiguration {
     @Bean
     public static PasswordEncoder getEncoder() {
         // return NoOpPasswordEncoder.getInstance();
-        return new BCryptPasswordEncoder(12);
+        return NoOpPasswordEncoder.getInstance();
     }
 
     // AuthenticationProvider связывает между собой
@@ -53,11 +56,20 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(
                         auth ->
                                 auth
-                                        .requestMatchers(toH2Console()).permitAll()
+                                        //.requestMatchers(toH2Console()).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/index.html")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/open")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/")).permitAll()
-                                        .requestMatchers(antMatcher(HttpMethod.GET, "/admin/**")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/pizzas/new-pizza/")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/pizzas/update{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/pizzas/delete{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/caffe/new-caffe")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/caffe/update{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/caffe/delete{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.GET,"/api/user/get-user{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/user/create-user")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/user/update{{id}}")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/user/delete{{id}}")).hasAnyRole("ADMIN")
                                         .anyRequest().authenticated() // все остальные только требуют аутентификации
                 )
                 .formLogin()// стандартная форма для аутентификации

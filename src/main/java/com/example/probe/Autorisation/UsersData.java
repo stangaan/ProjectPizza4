@@ -1,6 +1,6 @@
 package com.example.probe.Autorisation;
 
-import com.example.probe.Entity.RegisterUsers;
+import com.example.probe.Entity.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,29 +12,32 @@ import java.util.Collection;
 // модель безопасности
 // наща задача замапить модель нашего пользователся в спринговую
 
-public class UserData implements UserDetails {
+public class UsersData implements UserDetails {
 
-    private RegisterUsers registerUsers; // наша модель
+    private Users users; // наша модель
+
+
+public UsersData(Users users){this.users= users;}
 
 
 
-public UserData (RegisterUsers registerUsers){
-        this.registerUsers=registerUsers;
-}
     // роли в модели пользователя спринг
 
+
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority(registerUsers.getRoles()));
+    return Arrays.asList(new SimpleGrantedAuthority(users.getRoles()));
+
     }
 
     @Override
     public String getPassword() {
-        return registerUsers.getPassword();
+        return users.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return registerUsers.getUsername();
+        return users.getUsername();
     }
 
     @Override
@@ -56,5 +59,4 @@ public UserData (RegisterUsers registerUsers){
     public boolean isEnabled() {
         return true;
     }
-
 }

@@ -1,9 +1,8 @@
 package com.example.probe.Entity;
 
-public enum UserRolls {
+
+
+public enum UserRoles {
             ADMIN,
     USER,
-    COOK,
-    CUSTOMER,
-    SELLE,
 }

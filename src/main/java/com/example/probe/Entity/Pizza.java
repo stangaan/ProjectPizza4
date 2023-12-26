@@ -34,13 +34,7 @@ public class Pizza {
         this.id = id;
     }
 
-    //@ManyToOne
-    //@JoinColumn(name = "user_id")
-    //private User user;
-
-    //@ManyToOne
-    //@JoinColumn(name = "caffeId")
-    //private Caffe caffe;
+;
 
 }
 

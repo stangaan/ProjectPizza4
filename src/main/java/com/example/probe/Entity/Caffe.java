@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Time;
+import java.util.List;
 
 
 @Entity
@@ -33,12 +34,4 @@ public class Caffe {
     private Time closed_at;
 
 
-//@OneToMany(mappedBy= "caffe")
- //private List<Pizza> pizzas;
-//@OneToMany
- //@JoinColumn(name = "user_id")
-//private List<User> users;
-//@OneToMany
-  //@JoinColumn(name = "id")
-//private List<RegisterUsers> registerUsers;//
 }

@@ -1,26 +1,41 @@
 package com.example.probe.Autorisation;
 
-import com.example.probe.Entity.RegisterUsers;
-import com.example.probe.Repository.RegisterUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.probe.Entity.UserRoles;
+import com.example.probe.Entity.Users;
+import com.example.probe.Repository.UsersRepository;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-// источник UserDetail
-// получает пользователей из их хранилища и мапит на UserDetail
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+
+
 @Service
 public class UserDetailSource implements UserDetailsService {
 
-    @Autowired
-    private RegisterUserRepository registerUserRepository;
+    public UsersRepository usersRepository;
 
-    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-         RegisterUsers registerUsers = (RegisterUsers) registerUserRepository.getUserByUsername(username);
-        if (registerUsers == null)
+        Users users = usersRepository.findUsersByUsername(username);
+        if (users == null)
             throw new UsernameNotFoundException("User with username " + username + " not found");
-    return new UserData(registerUsers);
+
+
+        return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), getAuthorities());
+
+    }
+    private Collection<? extends GrantedAuthority> getAuthorities() {
+//        return roles.str()
+//                .map(role -> new SimpleGrantedAuthority(roles.toString()))
+//                .collect(Collectors.toList());\
+return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
+    }
 }
-}
+

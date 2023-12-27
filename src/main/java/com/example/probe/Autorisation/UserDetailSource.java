@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.stream;
 
 
 @Service
@@ -23,7 +24,7 @@ public class UserDetailSource implements UserDetailsService {
     public UsersRepository usersRepository;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users users = usersRepository.findUsersByUsername(username);
+        Users users =  usersRepository.findUsersByUsername(username);
         if (users == null)
             throw new UsernameNotFoundException("User with username " + username + " not found");
 
@@ -32,10 +33,9 @@ public class UserDetailSource implements UserDetailsService {
 
     }
     private Collection<? extends GrantedAuthority> getAuthorities() {
-//        return roles.str()
-//                .map(role -> new SimpleGrantedAuthority(roles.toString()))
-//                .collect(Collectors.toList());\
-return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
+        return getAuthorities().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role)) // Префикс "ROLE_" для каждой роли
+                .collect(Collectors.toList());
     }
 }
 

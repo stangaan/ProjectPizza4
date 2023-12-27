@@ -5,14 +5,14 @@ import com.example.probe.Service.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/user")
 public class UsersController {
     private final UsersService usersService;
 
-@GetMapping("/user")
+
+    @GetMapping("/user")
 public String hello(){return "<h2> Hello user!!!</h2>";}
     @GetMapping("/all-users")
     public Users getAllUsers(){return usersService.getAllUsers();}

@@ -17,7 +17,9 @@ public class Users{
     public Long id;
     public String username;
     public String password;
-    public String roles;
+    public String roles;{
+        UserRoles userRoles;
+    }
     public String firstName;
     public String lastName;
     public String station;

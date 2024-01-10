@@ -3,6 +3,6 @@ package com.example.probe.Entity;
 
 
 public enum UserRoles {
-            ADMIN,
-    USER,
+          ROLE_ADMIN,
+    ROLE_USER,
 }

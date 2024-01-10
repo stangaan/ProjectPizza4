@@ -1,6 +1,8 @@
 package com.example.probe.Autorisation;
 
 import com.example.probe.Entity.Users;
+import com.example.probe.Repository.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +15,8 @@ import java.util.Collection;
 // наща задача замапить модель нашего пользователся в спринговую
 
 public class UsersData implements UserDetails {
+
+    UsersRepository usersRepository;
 
     private Users users; // наша модель
 

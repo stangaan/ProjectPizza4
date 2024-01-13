@@ -11,15 +11,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table
-public class RegisterUsers {
+public class Users{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-
     public String username;
-
     public String password;
-
-    public String roles;
+    public String roles;{
+        UserRoles userRoles;
+    }
+    public String firstName;
+    public String lastName;
+    public String station;
+    public String e_mail;
    // @OneToOne
      //    @JoinColumn(name= "user_id")
     //private User user;

@@ -2,8 +2,10 @@ package com.example.probe.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.userdetails.User;
 
 import java.sql.Time;
+import java.util.List;
 
 
 @Entity
@@ -31,14 +33,8 @@ public class Caffe {
     private Time open_at;
 
     private Time closed_at;
-
-
-//@OneToMany(mappedBy= "caffe")
- //private List<Pizza> pizzas;
+//
 //@OneToMany
- //@JoinColumn(name = "user_id")
-//private List<User> users;
-//@OneToMany
-  //@JoinColumn(name = "id")
-//private List<RegisterUsers> registerUsers;//
+//@JoinColumn(name = "id")
+//    private Users users;
 }

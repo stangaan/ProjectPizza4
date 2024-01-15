@@ -2,10 +2,8 @@ package com.example.probe.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.userdetails.User;
 
 import java.sql.Time;
-import java.util.List;
 
 
 @Entity
@@ -14,13 +12,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table
-public class Caffe {
+public class Cafe {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
 
-    private Long caffeId;
+    private Long cafeId;
 
-    private String nameCaffe;
+    private String nameCafe;
 
     private String city;
 

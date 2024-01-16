@@ -30,7 +30,7 @@ public class UsersService {
         users.setPassword(hashedPassword);
         usersRepository.save(users);
     }
-    public Users getAllUsers() {return (Users) usersRepository.findAll();}
+    public Iterable <Users> getAllUsers() {return  usersRepository.findAll();}
 
     public Users getUserById(Long id){return usersRepository.findById(id).orElse(null);}
 

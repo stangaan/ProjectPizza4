@@ -15,7 +15,7 @@ public class UsersController {
     @GetMapping("/user")
 public String hello(){return "<h2> Hello user!!!</h2>";}
     @GetMapping("/all-users")
-    public Users getAllUsers(){return usersService.getAllUsers();}
+    public Iterable <Users> getAllUsers(){return usersService.getAllUsers();}
 
     @GetMapping(
                 "/get-user{id}")

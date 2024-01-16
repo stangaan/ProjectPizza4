@@ -20,14 +20,10 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 public class SecurityConfiguration  {
 
 @Autowired
-    private UserDetailSource createPizza;
-    private UserDetailSource updatePizza;
-    private UserDetailSource deletePizza;
+    private UserDetailSource source;
 
 
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+
 
     @Bean
     public static NoOpPasswordEncoder getEncoder(){
@@ -38,61 +34,11 @@ public class SecurityConfiguration  {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(getEncoder());
-        provider.setUserDetailsService(createPizza);
+        provider.setUserDetailsService(source);
         return provider;
 
    }
 
-
-//    protected void configure(HttpSecurity http) throws Exception {
-//      http.authorizeRequests()
-//                                        .requestMatchers(antMatcher(HttpMethod.GET, "/api/")).permitAll()
-//                                        .requestMatchers(antMatcher(HttpMethod.GET,"/api/pizzas/pizza")).permitAll()
-//                                        .requestMatchers(antMatcher(HttpMethod.POST,"/new-pizza/")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/update")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/delete")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.POST,"/new-caffe")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/update")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/delete")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.GET,"/get-user")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.POST,"/create-user")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/update")).hasAnyRole("ADMIN")
-//                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/delete")).hasAnyRole("ADMIN")
-////                //
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .and()
-//                .csrf().disable()
-//                .headers().frameOptions().disable()
-//                .and()
-//                .httpBasic();
-//    }
-
-    //@Configuration // методы класса являются источниками конфигурационных @Bean
-//@EnableWebSecurity // внутри класса настраивается доступ к url
-//public class SecurityConfiguration {
-//
-//    private UserDetailsService userDetailsService; // Убедитесь, что у вас есть бин UserDetailsService
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider()); // Установите UserDetailsService
-//        // Здесь также можете настроить другие параметры аутентификации
-//    }
-//
-//    public UserDetailSource source;
-//
-//    // механизм проверки паролей
-//    // NoOpPasswordEncoder - пароль не шифруется
-//    // BCryptPasswordEncoder - используется BCrypt
-//    // сгенерировать BCrypt пароли можно в https://bcrypt-generator.com/
-
-//
-//    // AuthenticationProvider связывает между собой
-//    // источник UserDetail о пользователях и
-//    // механизм проверки их паролей
-
-//
-//    // SecurityFilterChain используется для настройки url которые защищаются
     @Bean
     public SecurityFilterChain getChain(HttpSecurity http) throws Exception {
         http
@@ -111,7 +57,7 @@ public class SecurityConfiguration  {
                                         .requestMatchers(antMatcher(HttpMethod.POST,"/api/user/create-user")).hasAnyRole("ADMIN", "USER")
                                         .requestMatchers(antMatcher(HttpMethod.PUT,"/api/user/update{{id}}")).hasAnyRole("ADMIN", "USER")
                                         .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/user/delete{{id}}")).hasAnyRole("ADMIN", "USER")
-                                        .anyRequest().authenticated())
+                                        .anyRequest().permitAll())
                                         .formLogin()
                                         .and()
                 .csrf() // выключается csrf

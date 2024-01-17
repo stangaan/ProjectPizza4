@@ -10,12 +10,8 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import javax.sql.DataSource;
-
-import static java.util.Base64.getEncoder;
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 @Configuration
 @EnableWebSecurity
@@ -50,8 +46,8 @@ public class SecurityConfiguration  {
                         auth ->
                                 auth
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/api/pizzas/pizza")).permitAll()
-                                        .requestMatchers(antMatcher(HttpMethod.GET, "/api/caffe/all")).permitAll()
-                                        .requestMatchers(antMatcher(HttpMethod.POST, "/api/pizzas/new-pizza")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.GET, "/api/cafe/all")).permitAll()
+                                        .requestMatchers(antMatcher(HttpMethod.POST, "/api/pizzas/new-pizza")).authenticated()
                                         //.requestMatchers(antMatcher(HttpMethod.PUT, "/api/pizzas/update")).hasAnyRole("ADMIN", "USER")
                                         //.requestMatchers(antMatcher(HttpMethod.DELETE,"/api/pizzas/delete")).hasAnyRole("ADMIN", "USER")
                                         //.requestMatchers(antMatcher(HttpMethod.POST,"/api/cafe/new-caffe")).hasAnyRole("ADMIN", "USER")

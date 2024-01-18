@@ -1,5 +1,6 @@
 
 import com.example.probe.Entity.Users;
+import com.example.probe.ProbeApplication;
 import com.example.probe.Repository.UsersRepository;
 import com.example.probe.Service.UsersService;
 
@@ -18,7 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = ProbeApplication.class)
 public class IntegrationTest {
     @LocalServerPort
     private int port;

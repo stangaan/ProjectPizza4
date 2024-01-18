@@ -1,5 +1,6 @@
 package com.exemple.probe.ControllersTest;
 
+import com.example.probe.ProbeApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +15,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(classes = ProbeApplication.class)
 @AutoConfigureMockMvc
 public class UserControllerIntegrationTest {
 
@@ -22,11 +23,11 @@ public class UserControllerIntegrationTest {
     private MockMvc mockMvc;
 
 
-    private ObjectMapper objectMapper;
+   // private ObjectMapper objectMapper;
 
-    public UserControllerIntegrationTest(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
+    //public UserControllerIntegrationTest(ObjectMapper objectMapper) {
+      //  this.objectMapper = objectMapper;
+    //}
 
     @Test
     public void testUserControllerEndpoints() throws Exception {

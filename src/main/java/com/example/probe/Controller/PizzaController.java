@@ -18,15 +18,12 @@ public class PizzaController {
 public List<Pizza> getAllPizza(){
         return pizzaService.getAllPizza();
 }
-    @GetMapping("/pizza{id}")
+    @GetMapping("/pizza/{id}")
     public Pizza getPizzaById(@PathVariable Long id){
         return pizzaService.getPizzaById(id);
     }
     @PostMapping ("/new-pizza")
-    public Pizza createPizza(@RequestBody Pizza pizza){
-
-        return pizzaService.createPizza(pizza);
-    }
+    public Pizza createPizza(@RequestBody Pizza pizza){return pizzaService.createPizza(pizza);}
     @PutMapping("/update/{id}")
     public Pizza updatePizza(@PathVariable Long id, @RequestBody Pizza updatePizza){return pizzaService.updatePizza(id, updatePizza);}
     @DeleteMapping("/delete/{id}")

@@ -1,6 +1,7 @@
 package com.example.probe.Entity;
 
 import jakarta.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,17 +15,20 @@ import lombok.Setter;
 public class Users{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String username;
+    @Column(name = "user_id")
+    public Long userId;
+    @Column(name = "user_name")
+    public String userName;
     public String password;
-    public String roles;{
-        UserRoles userRoles;
-    }
+    public String roles;
+    @Column(name = "first_name")
     public String firstName;
+    @Column(name = "last_name")
     public String lastName;
     public String station;
-    public String e_mail;
-   // @OneToOne
+    @Column(name = "e_mail")
+    public String eMail;
+   // @OneToOnee_mail
      //    @JoinColumn(name= "user_id")
     //private User user;
 }

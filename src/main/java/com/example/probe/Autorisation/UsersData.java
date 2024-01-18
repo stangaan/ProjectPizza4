@@ -41,7 +41,7 @@ public UsersData(Users users){this.users= users;}
 
     @Override
     public String getUsername() {
-        return users.getUsername();
+        return users.getUserName();
     }
 
     @Override

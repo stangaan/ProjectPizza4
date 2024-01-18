@@ -14,8 +14,10 @@ public class Pizza {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name ="pizza_Id")
+    private Long pizzaId;
 
+    @Column(name = "name_Pizza")
     private String namePizza;
 
     private String ingredients;
@@ -30,8 +32,8 @@ public class Pizza {
 
 
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long pizzaId) {
+        this.pizzaId = pizzaId;
     }
 
 ;

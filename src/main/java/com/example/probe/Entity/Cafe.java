@@ -15,10 +15,10 @@ import java.sql.Time;
 public class Cafe {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-
+    @Column(name = "cafe_Id")
     private Long cafeId;
-
-    private String name_cafe;
+    @Column(name = "name_cafe")
+    private String nameCafe;
 
     private String city;
 
@@ -27,10 +27,10 @@ public class Cafe {
     private String email;
 
     private Long phone;
-
-    private Time open_at;
-
-    private Time closed_at;
+    @Column(name = "open_at")
+    private Time openAt;
+    @Column(name = "closed_at")
+    private Time closedAt;
 //
 //@OneToMany
 //@JoinColumn(name = "id")

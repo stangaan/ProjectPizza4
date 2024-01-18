@@ -15,10 +15,10 @@ public class UserDetailSource implements UserDetailsService {
 @Autowired
     public UsersRepository usersRepository;
 @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users users = usersRepository.findUsersByUsername(username);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        Users users = usersRepository.findUsersByUserName(userName);
         if (users == null)
-            throw new UsernameNotFoundException("User with username " + username + " not found");
+            throw new UsernameNotFoundException("User with username " + userName + " not found");
 
 
         return new UsersData(users);

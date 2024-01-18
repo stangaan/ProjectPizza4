@@ -17,15 +17,13 @@ import java.util.List;
         return pizzaRepository.findAll();
     }
 
-    public Pizza getPizzaById(Long id){
-        return pizzaRepository.findById(id).orElse(null);
-    }
+    public Pizza getPizzaById(Long id){return pizzaRepository.findById(id).orElse(null);}
     public Pizza createPizza(Pizza pizza) {
         return pizzaRepository.save(pizza);
     }
 
-        public Pizza updatePizza(Long pizzaId, Pizza updatePizza) {
-        Pizza pizza1 = pizzaRepository.findById(pizzaId).orElse(null);
+        public Pizza updatePizza(Long id, Pizza updatePizza) {
+        Pizza pizza1 = pizzaRepository.findById(id).orElse(null);
         if (pizza1 != null){
             pizza1.setNamePizza(updatePizza.getNamePizza());
             pizza1.setQuantity(updatePizza.getQuantity());
@@ -37,8 +35,8 @@ import java.util.List;
         return null;
     }
 
-    public void deletePizza(Long pizzaId){
-        pizzaRepository.deleteById(pizzaId);
+    public void deletePizza(Long id){
+        pizzaRepository.deleteById(id);
 
 
     }}

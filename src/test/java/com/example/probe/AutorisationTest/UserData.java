@@ -1,4 +1,4 @@
-package com.example.probe.Autorisation;
+package com.example.probe.AutorisationTest;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

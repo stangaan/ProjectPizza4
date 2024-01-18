@@ -9,6 +9,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -48,15 +49,15 @@ public class SecurityConfiguration  {
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/api/pizzas/pizza")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/api/cafe/all")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.POST, "/api/pizzas/new-pizza")).authenticated()
-                                        //.requestMatchers(antMatcher(HttpMethod.PUT, "/api/pizzas/update")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.DELETE,"/api/pizzas/delete")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.POST,"/api/cafe/new-caffe")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.PUT,"/api/cafe/update")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.DELETE,"/api/cafe/delete")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.GET,"/api/user/get-user")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.POST,"/api/user/create-user")).hasAnyRole("ADMIN", "USER")
-                                        //.requestMatchers(antMatcher(HttpMethod.PUT,"/api/user/update{{id}}")).hasAnyRole("ADMIN", "USER")
-                                        .requestMatchers(antMatcher(HttpMethod.DELETE, "/api/user/delete")).permitAll()
+                                        .requestMatchers(antMatcher(HttpMethod.PUT, "/api/pizzas/update**")).hasAnyRole( "USER")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/pizzas/delete**")).hasAnyRole( "USER")
+                                        .requestMatchers(antMatcher(HttpMethod.POST,"/api/cafe/new-caffe")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/cafe/update**")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/cafe/delete**")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.GET,"/api/user/get-user")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.POST,"/api/user/create-user")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.PUT,"/api/user/update**")).hasAnyRole("ADMIN")
+                                        .requestMatchers(antMatcher(HttpMethod.DELETE, "/api/user/delete**")).hasAnyRole("ADMIN")
                                         .anyRequest().authenticated())
                 .formLogin()
                 .and()

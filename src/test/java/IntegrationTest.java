@@ -6,16 +6,13 @@ import com.example.probe.Service.UsersService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,7 +37,7 @@ public void testReadUsers(){
        assertEquals(HttpStatus.OK, response.getStatusCode());
        assertEquals("John", response.getBody().getFirstName());
        assertEquals("John", response.getBody().getLastName());
-       assertEquals("nan,2005@mail.ru", response.getBody().getE_mail());
+       assertEquals("nan,2005@mail.ru", response.getBody().getEMail());
    }
  public void createUsers() {
 
@@ -53,7 +50,7 @@ public void testReadUsers(){
                         "\"firstName\": \"Stengauar\"," +
                         "\"lastName\": \"Andrei\"," +
                         "\"station\": \"IT\"," +
-                        "\"e_mail\": \"nan.2005@mail.ru\"}",
+                        "\"E_mail\": \"nan.2005@mail.ru\"}",
                         headers
                  );
     assertEquals(usersRepository.count(),2);

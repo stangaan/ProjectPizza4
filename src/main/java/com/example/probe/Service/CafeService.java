@@ -19,28 +19,28 @@ public class CafeService {
     public List<Cafe> getAllCafe(){
         return cafeRepository.findAll();
     }
-    public Cafe getCafeById(Long cafeId){
-        return cafeRepository.findById(cafeId).orElse(null);
+    public Cafe getCafeById(Long id ){
+        return cafeRepository.findById(id). orElse(null);
     }
     public Cafe createCafe(Cafe cafe){
         return cafeRepository.save(cafe);
     }
-    public Cafe updateCafe(Long cafeId, Cafe updateCafe) {
-        Cafe cafe1 = cafeRepository.findById(cafeId).orElse(null);
+    public Cafe updateCafe(Long id, Cafe updateCafe) {
+        Cafe cafe1 = cafeRepository.findById(id).orElse(null);
         if (cafe1 != null) {
-            cafe1.setName_cafe(updateCafe.getName_cafe());
+            cafe1.setNameCafe(updateCafe.getNameCafe());
             cafe1.setCity(updateCafe.getCity());
             cafe1.setAddress(updateCafe.getAddress());
             cafe1.setEmail(updateCafe.getEmail());
             cafe1.setPhone(updateCafe.getPhone());
-            cafe1.setOpen_at(Time.valueOf(updateCafe.getOpen_at().toLocalTime()));
-            cafe1.setClosed_at(Time.valueOf(updateCafe.getClosed_at().toLocalTime()));
+            cafe1.setOpenAt(Time.valueOf(updateCafe.getOpenAt().toLocalTime()));
+            cafe1.setClosedAt(Time.valueOf(updateCafe.getClosedAt().toLocalTime()));
             return cafeRepository.save(cafe1);
         }
         return null;
     }
 
-    public void deleteCafe(Long cafeID){
-        cafeRepository.deleteById(cafeID);
+    public void deleteCafe(Long id){
+        cafeRepository.deleteById(id);
     }
 }

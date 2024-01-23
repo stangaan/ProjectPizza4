@@ -49,6 +49,8 @@ public class SecurityConfiguration  {
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/api/pizzas/pizza")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.GET, "/api/cafe/all")).permitAll()
                                         .requestMatchers(antMatcher(HttpMethod.POST, "/api/pizzas/new-pizza")).authenticated()
+                                        .requestMatchers(antMatcher(HttpMethod.GET,"/user**")).hasRole("USER")
+                                        .requestMatchers(antMatcher(HttpMethod.GET,"/api/cafe/cafe**")).hasRole("USER")
                                         .requestMatchers(antMatcher(HttpMethod.PUT, "/api/pizzas/update**")).hasAnyRole( "USER")
                                         .requestMatchers(antMatcher(HttpMethod.DELETE,"/api/pizzas/delete**")).hasAnyRole( "USER")
                                         .requestMatchers(antMatcher(HttpMethod.POST,"/api/cafe/new-caffe")).hasAnyRole("ADMIN")

@@ -1,5 +1,6 @@
 package com.exemple.probe.ControllersTest;
-import com.example.probe.Entity.Cafe;
+
+import com.example.probe.Entity.Pizza;
 import com.example.probe.ProbeApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,32 +18,29 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest(classes = ProbeApplication.class)
 @AutoConfigureMockMvc
-class CafeControllerTest {
-
-    @Autowired
+public class PizzaControllerTest {
+@Autowired
     private MockMvc mockMvc;
-
-    private ObjectMapper objectMapper;
+private ObjectMapper objectMapper;
 @BeforeEach
-public void setUp(){
+    public void setUp(){
     objectMapper = new ObjectMapper();
 }
-    @Test
-    public void testCreateCafe() throws Exception {
-        // Создаем объект Cafe для отправки в запросе
-        Cafe cafe = new Cafe();
-        cafe.setNameCafe("Название кафе");
-        cafe.setCity("Test");
-        cafe.setEmail("nan@");
-        cafe.setAddress("Адрес кафе");
-        // Отправляем POST запрос
-        ResultActions result = mockMvc
-                .perform(post("/api/cafe/new-cafe")
-                        .with(httpBasic("admin","admin"))
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .content(objectMapper.writeValueAsString(cafe)));
+@Test
+    public void testCreatePizza() throws Exception{
+    Pizza pizza = new Pizza();
+    pizza.setNamePizza("TestPizza");
+    pizza.setSize(100);
+    pizza.setIngredients("cheese");
+    pizza.setPrice(100);
+    pizza.setQuantity("100");
 
-        // Проверяем, что статус ответа - 201 (Created)
-        result.andExpect(status().isOk());
-    }
+    ResultActions resultActions = mockMvc
+            .perform(post("/api/pizzas/new-pizza")
+                    .with(httpBasic("admin","admin"))
+                    .contentType(MediaType.APPLICATION_JSON_UTF8)
+                    .content(objectMapper.writeValueAsString(pizza)));
+    resultActions.andExpect(status().isOk());
+
+}
 }

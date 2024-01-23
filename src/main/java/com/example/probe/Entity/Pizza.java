@@ -28,7 +28,13 @@ public class Pizza {
 
     private String quantity;
 
+@ManyToOne
+@JoinColumn(name = "cafe_id")
+private Cafe cafe;
 
+@ManyToOne
+@JoinColumn(name = "user_id")
+private Users users;
 
 
 

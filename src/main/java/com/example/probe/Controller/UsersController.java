@@ -5,7 +5,6 @@ import com.example.probe.Service.UsersService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @AllArgsConstructor
 @RestController

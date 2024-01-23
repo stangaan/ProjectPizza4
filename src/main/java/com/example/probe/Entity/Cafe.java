@@ -31,8 +31,13 @@ public class Cafe {
     private Time openAt;
     @Column(name = "closed_at")
     private Time closedAt;
-//
-//@OneToMany
-//@JoinColumn(name = "id")
-//    private Users users;
+
+@ManyToOne
+@JoinColumn(name = "user_id")
+    private Users users;
+
+@ManyToOne
+    @JoinColumn(name ="pizza_id")
+    private Pizza pizza;
 }
+

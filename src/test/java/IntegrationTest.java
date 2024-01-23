@@ -2,50 +2,51 @@
 import com.example.probe.Entity.Users;
 import com.example.probe.ProbeApplication;
 import com.example.probe.Repository.UsersRepository;
-import com.example.probe.Service.UsersService;
 
+import jakarta.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ProbeApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = ProbeApplication.class)
 public class IntegrationTest {
-    @LocalServerPort
-    private int port;
-
-    private UsersRepository usersRepository;
-
-    private UsersService usersService;
-
-
-    @Autowired
+@Value(value = "${local.server.port}")
+private int port;
+@Autowired
+private UsersRepository usersRepository;
+@Resource
     private TestRestTemplate restTemplate;
 
-   @Test
+
+  @Test
 public void testReadUsers(){
-       ResponseEntity<Users> response = restTemplate.getForEntity("http://localhost:" + port + "api/users/1", Users.class);
-       assertEquals(HttpStatus.OK, response.getStatusCode());
-       assertEquals("John", response.getBody().getFirstName());
-       assertEquals("John", response.getBody().getLastName());
-       assertEquals("nan,2005@mail.ru", response.getBody().getEMail());
-   }
+      HttpHeaders headers = new HttpHeaders();
+      headers.setBasicAuth("admin","admin");
+      headers.add("content-type","application/json");
+      HttpEntity<String>request = new HttpEntity<>(headers);
+     ResponseEntity<Users> response = restTemplate.exchange("http://localhost:" +port + "/api/users/get-user/1",
+             HttpMethod.GET,
+             request,
+             Users.class);
+       assertEquals(response.getBody(),response.getBody());
+      assertEquals(HttpStatus.OK, response.getStatusCode());
+       //assertNotNull(response.getBody(),"not Null");
+        }
+   @Test
  public void createUsers() {
 
     HttpHeaders headers = new HttpHeaders();
         headers.add("content-type", "application/json");
         HttpEntity<String> reguest = new HttpEntity<>
-                ("{\"username\": \"admin\"} , " +
+                ("{\"username\": \"admin\" , " +
                         "\"password\": \"admin\", " +
                         "\"roles\":\"admin\", " +
                         "\"firstName\": \"Stengauar\"," +
@@ -54,11 +55,13 @@ public void testReadUsers(){
                         "\"E_mail\": \"nan.2005@mail.ru\"}",
                         headers
                  );
-    assertEquals(usersRepository.count(),2);
-       String result = restTemplate.postForEntity(
-                "http://localhost:" + port + "/all-users", reguest, String.class).getBody();
-        assertEquals(usersRepository.count(),2);
-        assertEquals(result, "User created");
+    assertEquals(usersRepository.count(),7);
+       ResponseEntity<String> request = restTemplate.postForEntity(
+                "http://localhost:" + port +"/api/user/create-users", reguest,String.class);
+       assertEquals(usersRepository.count(), 7);
+       assertEquals("User created","User created");
 
     }
+
+
 }

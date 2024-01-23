@@ -28,7 +28,7 @@ public class Users{
     public String station;
     @Column(name = "e_mail")
     public String eMail;
-   // @OneToOnee_mail
-     //    @JoinColumn(name= "user_id")
-    //private User user;
+    @ManyToOne
+      @JoinColumn(name= "cafe_id")
+    private Cafe cafe;
 }

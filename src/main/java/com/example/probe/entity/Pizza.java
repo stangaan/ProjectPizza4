@@ -1,4 +1,4 @@
-package com.example.probe.Entity;
+package com.example.probe.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,7 +42,7 @@ private Users users;
         this.pizzaId = pizzaId;
     }
 
-;
+
 
 }
 

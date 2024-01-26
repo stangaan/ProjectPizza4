@@ -1,7 +1,7 @@
-package com.example.probe.Service;
+package com.example.probe.service;
 
-import com.example.probe.Entity.Cafe;
-import com.example.probe.Repository.CafeRepository;
+import com.example.probe.entity.Cafe;
+import com.example.probe.repository.CafeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

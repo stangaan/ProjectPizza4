@@ -1,7 +1,7 @@
-package com.example.probe.Autorisation;
+package com.example.probe.autorisation;
 
-import com.example.probe.Entity.Users;
-import com.example.probe.Repository.UsersRepository;
+import com.example.probe.entity.Users;
+import com.example.probe.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

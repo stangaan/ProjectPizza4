@@ -1,8 +1,10 @@
 
-import com.example.probe.Entity.Users;
+import com.example.probe.entity.Users;
 import com.example.probe.ProbeApplication;
-import com.example.probe.Repository.UsersRepository;
+import com.example.probe.repository.UsersRepository;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.std.NumberSerializers;
 import jakarta.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
+import static javax.management.Query.value;
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +28,10 @@ private int port;
 private UsersRepository usersRepository;
 @Resource
     private TestRestTemplate restTemplate;
+@Autowired
+private MockMvc mockMvc;
+@Autowired
+private ObjectMapper objectMapper;
 
 
   @Test
@@ -32,13 +40,10 @@ public void testReadUsers(){
       headers.setBasicAuth("admin","admin");
       headers.add("content-type","application/json");
       HttpEntity<String>request = new HttpEntity<>(headers);
-     ResponseEntity<Users> response = restTemplate.exchange("http://localhost:" +port + "/api/users/get-user/1",
-             HttpMethod.GET,
-             request,
-             Users.class);
+     ResponseEntity<Users> response = restTemplate.exchange("http://localhost:" +port + "/api/user/get-user/1",
+             HttpMethod.GET, request, Users.class);
        assertEquals(response.getBody(),response.getBody());
       assertEquals(HttpStatus.OK, response.getStatusCode());
-       //assertNotNull(response.getBody(),"not Null");
         }
    @Test
  public void createUsers() {

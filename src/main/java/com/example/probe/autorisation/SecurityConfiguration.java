@@ -1,4 +1,4 @@
-package com.example.probe.Autorisation;
+package com.example.probe.autorisation;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

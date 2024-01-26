@@ -1,6 +1,6 @@
-package com.example.probe.Repository;
+package com.example.probe.repository;
 
-import com.example.probe.Entity.Pizza;
+import com.example.probe.entity.Pizza;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

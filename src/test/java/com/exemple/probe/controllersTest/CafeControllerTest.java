@@ -1,5 +1,5 @@
-package com.exemple.probe.ControllersTest;
-import com.example.probe.Entity.Cafe;
+package com.exemple.probe.controllersTest;
+import com.example.probe.entity.Cafe;
 import com.example.probe.ProbeApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +12,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 @SpringBootTest(classes = ProbeApplication.class)
 @AutoConfigureMockMvc
@@ -45,4 +47,5 @@ public void setUp(){
         // Проверяем, что статус ответа - 201 (Created)
         result.andExpect(status().isOk());
     }
+
 }

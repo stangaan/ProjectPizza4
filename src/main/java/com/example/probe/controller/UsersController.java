@@ -1,7 +1,9 @@
-package com.example.probe.Controller;
+package com.example.probe.controller;
 
-import com.example.probe.Entity.Users;
-import com.example.probe.Service.UsersService;
+import com.example.probe.entity.Users;
+import com.example.probe.service.UsersService;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

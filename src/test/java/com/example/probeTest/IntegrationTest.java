@@ -1,8 +1,6 @@
 package com.example.probeTest;
 
-import com.example.probe.Entity.Users;
-import com.example.probe.Repository.UsersRepository;
-import com.example.probe.Service.UsersService;
+import com.example.probe.entity.Users;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

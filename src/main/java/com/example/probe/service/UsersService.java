@@ -1,8 +1,8 @@
-package com.example.probe.Service;
+package com.example.probe.service;
 
 
-import com.example.probe.Entity.Users;
-import com.example.probe.Repository.UsersRepository;
+import com.example.probe.entity.Users;
+import com.example.probe.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

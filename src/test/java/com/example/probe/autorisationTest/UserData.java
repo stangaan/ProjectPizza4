@@ -1,12 +1,10 @@
-package com.example.probe.AutorisationTest;
+package com.example.probe.autorisationTest;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 // UserDetails это встроенная в спринг модель пользователя

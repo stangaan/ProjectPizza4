@@ -1,4 +1,4 @@
-package com.example.probe.Entity;
+package com.example.probe.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,5 +39,8 @@ public class Cafe {
 @ManyToOne
     @JoinColumn(name ="pizza_id")
     private Pizza pizza;
+
+    public Cafe(int i, String cafe1) {
+    }
 }
 

@@ -1,7 +1,7 @@
-package com.example.probe.Controller;
+package com.example.probe.controller;
 
-import com.example.probe.Entity.Pizza;
-import com.example.probe.Service.PizzaService;
+import com.example.probe.entity.Pizza;
+import com.example.probe.service.PizzaService;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

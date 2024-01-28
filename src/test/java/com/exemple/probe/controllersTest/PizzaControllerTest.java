@@ -2,9 +2,11 @@ package com.exemple.probe.controllersTest;
 
 import com.example.probe.entity.Pizza;
 import com.example.probe.ProbeApplication;
+import com.example.probe.service.PizzaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +25,10 @@ public class PizzaControllerTest {
 @Autowired
     private MockMvc mockMvc;
 private ObjectMapper objectMapper;
-@BeforeEach
+@Autowired
+public PizzaService pizzaService;
+
+    @BeforeEach
     public void setUp(){
     objectMapper = new ObjectMapper();
 }

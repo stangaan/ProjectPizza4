@@ -3,9 +3,12 @@ package com.exemple.probe.controllersTest;
 import com.example.probe.ProbeApplication;
 import com.example.probe.controller.PizzaController;
 import com.example.probe.entity.Pizza;
+import com.example.probe.service.PizzaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -29,15 +32,20 @@ public class PizzaTest {
     private MockMvc mockMvc;
 @Autowired
 private ObjectMapper objectMapper;
+@Autowired
+public PizzaService pizzaService;
 
     @Test
     public void testGetPizzaById() throws Exception{
-        Pizza newPizza = new Pizza();
-        ResultActions resultActions = mockMvc
-                .perform(get("/api/pizzas/pizza/{id}", 1L)
-                .with(httpBasic("admin","admin"))
-       .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(newPizza)));
-        resultActions.andExpect(status().isOk());
+        Mockito.when(this.pizzaService.getPizzaById(1)).thenReturn(testGetPizzaById(long );
+        mockMvc.perform(get("/api/pizzas/pizza/{id}", 1L))
+                .andExpect(status().isOk());
+       // Pizza newPizza = new Pizza();
+       // ResultActions resultActions = mockMvc
+         //       .perform(get("/api/pizzas/pizza/{id}", 1L)
+           //     .with(httpBasic("admin","admin"))
+      // .contentType(MediaType.APPLICATION_JSON)
+        //                .content(objectMapper.writeValueAsString(newPizza)));
+        //resultActions.andExpect(status().isOk());
     }
 }
